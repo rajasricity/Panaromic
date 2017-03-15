@@ -20,7 +20,11 @@
 <script>
     $(document).ready(function(){
         if(localStorage.Userno){
+          if(localStorage.Role != 'Director'){
           location.href="Dashboard.html";
+        }else{
+          location.href="Director.html";
+        }
         }else{
           location.href="Login.html";
         }
