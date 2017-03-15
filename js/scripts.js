@@ -1,4 +1,4 @@
-var server = "http://localhost/application/";
+var server = "https://panaromic.com/application/";
 $(document).ready(function(){
 $("#login").on('submit', function(e){
    e.preventDefault();
