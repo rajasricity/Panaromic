@@ -11,12 +11,12 @@
     <meta name="author" content="Panaromic Application">
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="fontawesome/css/font-awesome.css">
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=true&key=AIzaSyB0WTjQy5o77JCfRCuT0XiR9Jew-nMhIKA" async defer></script>
 </head>
 <body>
-<br><br>
-    <div class="container-fluid">
-<div class="container">
-Need to Design the Data
+    <div class="container_fluid" style="padding:0px;">
+<div style="position: fixed;min-height:100%;min-width:100%;">
+<div id="map"></div>
 </div>
 
 <div id="connection" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
@@ -36,6 +36,7 @@ Need to Design the Data
     </div>
 <script src="js/jquery-3.1.1.min.js"></script>
 <script src="bootstrap/js/bootstrap.js"></script>
+<script src="js/map.js"></script>
 <script src="js/scripts.js"></script>
 <script>
     $(document).ready(function(){
