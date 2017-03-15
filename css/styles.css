@@ -1,0 +1,23 @@
+.myBtn{
+  width:75px;
+  height:75px;
+  color:#fff;
+  background-color: #811359;
+  border: none;
+  border-radius: 50px;
+}
+.outDiv{
+ display: table;
+  height: 75px;
+  width: 100%;
+  text-align: center;
+}
+.inDiv{
+  display: table-cell;
+  vertical-align: middle;
+  color:#fff;
+  background-color: #811359;
+  border: none;
+  border-radius: 50px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
