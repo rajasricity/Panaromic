@@ -11,11 +11,27 @@
     <meta name="author" content="Panaromic Application">
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="fontawesome/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
     <script src="https://maps.googleapis.com/maps/api/js?sensor=true&key=AIzaSyB0WTjQy5o77JCfRCuT0XiR9Jew-nMhIKA" async defer></script>
 </head>
 <body>
+<div style="position:fixed;top:10px;width:100%;z-index:999;padding:5px;">
+    <div class="row">
+<div class="col-xs-3">
+<button class="myBtn"><i class="fa fa-bars fa-2x"></i></button>
+</div>
+<div class="col-xs-6">
+    <div class="outDiv">
+<span class="inDiv" id="uname"></span>
+    </div>
+</div>
+<div class="col-xs-3">
+<button class="myBtn"><i class="fa fa-refresh fa-2x" onclick="refresh();"></i></button>
+</div>
+    </div>
+</div>
     <div class="container_fluid" style="padding:0px;">
-<div style="position: fixed;min-height:100%;min-width:100%;">
+<div style="position: absolute;min-height:100%;min-width:100%;z-index:888">
 <div id="map"></div>
 </div>
 
@@ -41,6 +57,7 @@
 <script>
     $(document).ready(function(){
        connect();
+       getUname();
     });
 </script>
 </body>

@@ -10,6 +10,7 @@
     <meta name="description" content="Panaromic Business Application">
     <meta name="author" content="Panaromic Application">
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+
 </head>
 <body>
     <div class="container-fluid">
@@ -20,11 +21,12 @@
 <script>
     $(document).ready(function(){
         if(localStorage.Userno){
-          if(localStorage.Role != 'Director'){
+        if(localStorage.Role != 'Director'){
           location.href="Dashboard.html";
         }else{
           location.href="Director.html";
         }
+
         }else{
           location.href="Login.html";
         }
