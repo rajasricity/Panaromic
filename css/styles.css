@@ -1,14 +1,14 @@
 .myBtn{
-  width:75px;
-  height:75px;
+  width:45px;
+  height:45px;
   color:#fff;
-  background-color: #811359;
+  background-color: #116996;
   border: none;
   border-radius: 50px;
 }
 .outDiv{
  display: table;
-  height: 75px;
+  height: 45px;
   width: 100%;
   text-align: center;
 }
@@ -16,8 +16,25 @@
   display: table-cell;
   vertical-align: middle;
   color:#fff;
-  background-color: #811359;
+  background-color: #116996;
   border: none;
   border-radius: 50px;
   font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+.myUl{
+  list-style-type: none;
+  padding: 5px;
+  display: none;
+}
+
+.myUl li{
+padding:10px;
+background: #116996;
+color:#fff;
+font-family: "Trebuchet MS", Helvetica, sans-serif;
+margin: 2px;
+float:left;
+clear:left;
+border-radius: 10px;
+
 }
