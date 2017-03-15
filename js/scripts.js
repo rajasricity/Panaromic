@@ -1,4 +1,4 @@
-var server = "https://panaromic.com/application/";
+var server = "http://localhost/application/";
 $(document).ready(function(){
 $("#login").on('submit', function(e){
    e.preventDefault();
@@ -91,4 +91,12 @@ $.ajax({
 }
 function refresh(){
   location.reload();
+}
+function showOptions(){
+  $("#myUl").slideToggle("slow");
+}
+function logout(){
+  localStorage.setItem("Userno","");
+  localStorage.setItem("Role","");
+  location.href="Login.html";
 }
