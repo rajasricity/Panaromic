@@ -1,11 +1,9 @@
 var watchId;
 var latval,lngval;
 window.onload = function(){
-$("#map").height($(window).height()-10);
-$("#map").width($(window).width()-10);
-  alert("1");
+$("#map").height($(window).height());
+$("#map").width($(window).width());
 if(navigator.geolocation){
-  alert("2");
     navigator.geolocation.getCurrentPosition(onSuccess, onError,{
       maximumAge:60*1000,
       timeout:5*60*1000,
@@ -17,7 +15,6 @@ if(navigator.geolocation){
 
 }
 function onSuccess(position){
-  alert("3");
   var currentLat = position.coords.latitude;
   var currentLong = position.coords.longitude;
   latval = currentLat;
@@ -25,7 +22,7 @@ function onSuccess(position){
 
   var mapOptions = {
     center: new google.maps.LatLng(currentLat,currentLong),
-    zoom: 18,
+    zoom: 19,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     disableDefaultUI: true
   };
