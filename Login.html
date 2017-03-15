@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Login Form</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="description" content="Panaromic Business Application">
+    <meta name="author" content="Panaromic Application">
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="fontawesome/css/font-awesome.css">
+</head>
+<body>
+<br><br>
+    <div class="container-fluid">
+<div class="container">
+<br><br><br>
+<center><img src="images/login-logo.png" alt="Panaromic Logo" width="30%"></center>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title"><i class="fa fa-user"></i> LOGIN</h3>
+        </div>
+        <div class="panel-body">
+<form id="login" autocomplete="off">
+<input type="number" name="mnumber" id="mnumber" value="" class="form-control" placeholder="Mobile Number" tabindex="1" required="required"/><br>
+<input type="password" name="pword" id="pword" value="" class="form-control" placeholder="Password" tabindex="2" required="required"/><br>
+<input type="submit" name="submit" value="LOGIN" class="btn btn-primary btn-lg" style="width:100%" tabindex="3"/>
+</form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+<center><img src="images/preloader.gif" width="65" height="65" alt="" style="display:none" id="loader"></center>
+<div class="alert alert-danger" style="display:none" id="wmsg">
+  <strong>Sorry !</strong>Wrong username / password.
+</div>
+        </div>
+    </div>
+</div>
+
+<div id="connection" class="modal fade" role="dialog">
+  <div class="modal-dialog" style="padding-top:50%">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+<center><img src="images/connection.png" alt="" width="30%"></center>
+<b><center><span style="color: #FF5C5C">Check Internet Connection !</span></center></b><br>
+<center><a href="javascript:location.reload();" class="btn btn-primary">RETRY</a></center>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+    </div>
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="bootstrap/js/bootstrap.js"></script>
+<script src="js/scripts.js"></script>
+</body>
+</html>

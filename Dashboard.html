@@ -10,21 +10,36 @@
     <meta name="description" content="Panaromic Business Application">
     <meta name="author" content="Panaromic Application">
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="fontawesome/css/font-awesome.css">
 </head>
 <body>
+<br><br>
     <div class="container-fluid">
+<div class="container">
+Need to Design the Data
+</div>
+
+<div id="connection" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog" style="padding-top:50%">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+<center><img src="images/connection.png" alt="" width="30%"></center>
+<b><center><span style="color: #FF5C5C" id="conerr"></span></center></b><br>
+<center><a href="javascript:location.reload();" class="btn btn-primary">RETRY</a></center>
+      </div>
+    </div>
+
+  </div>
+</div>
 
     </div>
 <script src="js/jquery-3.1.1.min.js"></script>
 <script src="bootstrap/js/bootstrap.js"></script>
+<script src="js/scripts.js"></script>
 <script>
     $(document).ready(function(){
-        if(localStorage.Userno){
-          location.href="Dashboard.html";
-        }else{
-          alert();
-          location.href="Login.html";
-        }
+       connect();
     });
 </script>
 </body>
