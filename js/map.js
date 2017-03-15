@@ -29,6 +29,7 @@ function onSuccess(position){
   var map = new google.maps.Map(document.getElementById("map"), mapOptions);
   var marker = new google.maps.Marker({
      position: new google.maps.LatLng(currentLat, currentLong),
+     icon: "images/marker.ico",
      map: map
   });
 }
