@@ -4,7 +4,7 @@ window.onload = function(){
 $("#map").height($(window).height());
 $("#map").width($(window).width());
 if(navigator.geolocation){
-    navigator.geolocation.getCurrentPosition(onSuccess, onError,{
+    watchId = navigator.geolocation.watchPosition(onSuccess, onError,{
       maximumAge:60*1000,
       timeout:5*60*1000,
       enableHighAccuracy: true
@@ -32,6 +32,7 @@ function onSuccess(position){
      icon: "images/marker.ico",
      map: map
   });
+  alert("Watch Id :"+watchId+" Lat :"+latval+"&nbsp;Lon :"+lngval);
 }
 function onError(error){
  switch(error.code){
