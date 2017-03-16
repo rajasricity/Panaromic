@@ -32,7 +32,10 @@ function onSuccess(position){
      icon: "images/marker.ico",
      map: map
   });
-  alert("Watch Id :"+watchId+" Lat :"+latval+"&nbsp;Lon :"+lngval);
+  //alert("Watch Id :"+watchId+" Lat :"+latval+"&nbsp;Lon :"+lngval);
+  $("#wi").html(watchId);
+  $("#la").html(latval);
+  $("#ln").html(lngval);
 }
 function onError(error){
  switch(error.code){
