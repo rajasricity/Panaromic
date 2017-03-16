@@ -5,6 +5,7 @@
   background-color: #116996;
   border: none;
   border-radius: 50px;
+  outline: none;
 }
 .outDiv{
  display: table;
