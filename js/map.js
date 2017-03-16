@@ -26,15 +26,23 @@ function onSuccess(position){
     disableDefaultUI: true
   };
   map = new google.maps.Map(document.getElementById("map"), mapOptions);
-  var marker = new google.maps.Marker({
+  placemarker(new google.maps.LatLng(currentLat, currentLong));
+  /*var marker = new google.maps.Marker({
      position: new google.maps.LatLng(currentLat, currentLong),
      icon: "images/marker.ico",
      map: map
-  });
+  });*/
   //alert("Watch Id :"+watchId+" Lat :"+latval+"&nbsp;Lon :"+lngval);
   $("#wi").html(watchId);
   $("#la").html(latval);
   $("#ln").html(lngval);
+}
+function placemarker(position){
+  var marker = new google.maps.Marker({
+     position: position,
+     icon: "images/marker.ico",
+     map: map
+  });
 }
 function onError(error){
  switch(error.code){
