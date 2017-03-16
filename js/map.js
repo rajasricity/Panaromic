@@ -1,5 +1,5 @@
 var watchId;
-var latval,lngval;
+var latval,lngval,map,mapOptions;
 window.onload = function(){
 $("#map").height($(window).height());
 $("#map").width($(window).width());
@@ -12,7 +12,6 @@ if(navigator.geolocation){
 }else{
   Alert("Your Device Doesn't support Geo Location");
 }
-
 }
 function onSuccess(position){
   var currentLat = position.coords.latitude;
@@ -20,13 +19,13 @@ function onSuccess(position){
   latval = currentLat;
   lngval = currentLong;
 
-  var mapOptions = {
+  mapOptions = {
     center: new google.maps.LatLng(currentLat,currentLong),
     zoom: 19,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     disableDefaultUI: true
   };
-  var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+  map = new google.maps.Map(document.getElementById("map"), mapOptions);
   var marker = new google.maps.Marker({
      position: new google.maps.LatLng(currentLat, currentLong),
      icon: "images/marker.ico",
