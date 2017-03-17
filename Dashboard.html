@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="fontawesome/css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <script src="https://maps.googleapis.com/maps/api/js?sensor=true&key=AIzaSyB0WTjQy5o77JCfRCuT0XiR9Jew-nMhIKA" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyB0WTjQy5o77JCfRCuT0XiR9Jew-nMhIKA" async defer></script>
 </head>
 <body>
 <div style="position:fixed;top:10px;width:100%;z-index:999;padding:5px;">
@@ -26,21 +26,17 @@
     </div>
 </div>
 <div class="col-xs-3 pull-right" style="text-align: right">
-<button class="myBtn"><i class="fa fa-refresh fa-2x" onclick="refresh();"></i></button>
+<button class="myBtn"><i class="fa fa-refresh fa-2x" onclick="refresh();"></i></button><br><br>
+<button class="myBtn" style="background-color: red;display:none" id="stop"><i class="fa fa-stop" onclick="saveStop();"></i></button>
 </div>
     </div>
 </div>
 <div style="position:fixed;top:60px;z-index:999;padding:5px;">
 <ul class="myUl" id="myUl">
-    <li><i class="fa fa-suitcase"></i> Visit</li>
+    <li onclick="startVisit();" id="svisit"><i class="fa fa-suitcase"></i> Visit</li>
     <li><i class="fa fa-building-o"></i> Office</li>
     <li onclick="logout();"><i class="fa fa-level-down"></i> Logout</li>
 </ul>
-</div>
-<div style="position:fixed;bottom:20px;z-index:999;padding:5px;background-color: #fff;width:100%;padding:5px;">
-    Watch ID : <div id="wi"></div><br>
-    Latitude : <div id="la"></div><br>
-    Longitude : <div id="ln"></div>
 </div>
 <!--Toggle Menu Options Start-->
 
@@ -52,7 +48,6 @@
 
 <div id="connection" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
   <div class="modal-dialog" style="padding-top:50%">
-    <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-body">
 <center><img src="images/connection.png" alt="" width="30%"></center>
@@ -60,7 +55,17 @@
 <center><a href="javascript:location.reload();" class="btn btn-primary">RETRY</a></center>
       </div>
     </div>
+  </div>
+</div>
 
+<div id="loader" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog" style="padding-top:50%">
+    <div class="modal-content">
+      <div class="modal-body"><br><br>
+<center><img src="images/preloader.gif" width="150" height="150" alt=""></center>
+<br><br>
+      </div>
+    </div>
   </div>
 </div>
 
