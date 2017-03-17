@@ -1,5 +1,5 @@
 var watchId;
-var latval,lngval,map,mapOptions;
+var latval,lngval,map,mapOptions,marker;
 window.onload = function(){
 $("#map").height($(window).height());
 $("#map").width($(window).width());
@@ -26,12 +26,13 @@ function onSuccess(position){
     disableDefaultUI: true
   };
   map = new google.maps.Map(document.getElementById("map"), mapOptions);
-  placemarker(new google.maps.LatLng(currentLat, currentLong));
-  /*var marker = new google.maps.Marker({
+
+  //placemarker(new google.maps.LatLng(currentLat, currentLong));
+  marker = new google.maps.Marker({
      position: new google.maps.LatLng(currentLat, currentLong),
      icon: "images/marker.ico",
      map: map
-  });*/
+  });
   //alert("Watch Id :"+watchId+" Lat :"+latval+"&nbsp;Lon :"+lngval);
   $("#wi").html(watchId);
   $("#la").html(latval);
