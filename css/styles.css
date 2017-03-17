@@ -39,3 +39,8 @@ clear:left;
 border-radius: 10px;
 
 }
+
+.disabled{
+    pointer-events:none;
+    opacity:0.4;
+}
