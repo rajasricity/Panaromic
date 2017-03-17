@@ -135,8 +135,7 @@ $.ajax({
       $("#loader").modal('show');
     },
     success: function(str){
-      alert(str);
-      $("#loader").modal('hide');
+            $("#loader").modal('hide');
       localStorage.setItem("TrackId","");
       $("#stop").hide();
       $("#svisit").removeClass("disabled");
