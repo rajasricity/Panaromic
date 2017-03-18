@@ -11,14 +11,15 @@
     <meta name="author" content="Panaromic Application">
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="fontawesome/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
 <br><br>
     <div class="container-fluid">
 <div class="container">
 <br><br><br>
-<center><img src="images/login-logo.png" alt="Panaromic Logo" width="30%"></center>
-    <div class="panel panel-primary">
+<center><img src="images/login-logo.png" alt="Panaromic Logo" width="30%"><br><br></center>
+    <!--<div class="panel panel-primary">
         <div class="panel-heading">
             <h3 class="panel-title"><i class="fa fa-user"></i> LOGIN</h3>
         </div>
@@ -29,9 +30,14 @@
 <input type="submit" name="submit" value="LOGIN" class="btn btn-primary btn-lg" style="width:100%" tabindex="3"/>
 </form>
         </div>
-    </div>
+    </div>-->
+<form id="login" autocomplete="off">
+<input type="number" name="mnumber" class="myInput" placeholder="Mobile Number"/><br><br>
+<input type="password" name="pword" class="myInput" placeholder="Password"/><br><br>
+<input type="submit" name="submit" value="LOGIN" class="btn btn-default btn-lg" style="width:100%" />
+</form>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12"><br>
 <center><img src="images/preloader.gif" width="65" height="65" alt="" style="display:none" id="loader"></center>
 <div class="alert alert-danger" style="display:none" id="wmsg">
   <strong>Sorry !</strong>Wrong username / password.
