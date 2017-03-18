@@ -4,7 +4,12 @@ window.onload = function(){
 $("#map").height($(window).height());
 $("#map").width($(window).width());
 if(navigator.geolocation){
-    watchId = navigator.geolocation.watchPosition(onSuccess, onError,{
+    /*watchId = navigator.geolocation.watchPosition(onSuccess, onError,{
+      maximumAge:60*1000,
+      timeout:5*60*1000,
+      enableHighAccuracy: true
+    });*/
+    navigator.geolocation.getCurrentPosition(onSuccess, onError,{
       maximumAge:60*1000,
       timeout:5*60*1000,
       enableHighAccuracy: true
@@ -33,11 +38,23 @@ function onSuccess(position){
      icon: "images/marker.ico",
      map: map
   });
+
+  watchId = navigator.geolocation.watchPosition(showPosition, onError,{
+      maximumAge:60*1000,
+      timeout:5*60*1000,
+      enableHighAccuracy: true
+    });
   //alert("Watch Id :"+watchId+" Lat :"+latval+"&nbsp;Lon :"+lngval);
-  $("#wi").html(watchId);
+/*  $("#wi").html(watchId);
   $("#la").html(latval);
-  $("#ln").html(lngval);
+  $("#ln").html(lngval);*/
+
 }
+
+function showPosition(position) {
+  map.setCenter(new google.maps.LatLng(position.coords.latitude,position.coords.longitude));
+ }
+
 function placemarker(position){
   var marker = new google.maps.Marker({
      position: position,
