@@ -1,3 +1,10 @@
+html{
+  height: 100%;
+}
+body {
+  min-height: 100%;
+background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+}
 .myBtn{
   width:45px;
   height:45px;
@@ -43,4 +50,7 @@ border-radius: 10px;
 .disabled{
     pointer-events:none;
     opacity:0.4;
+}
+.myInput{
+width:100%;background: transparent;height:40px;border:0px;border-bottom: 1px solid #000;outline: none;font-size: 20px;
 }
