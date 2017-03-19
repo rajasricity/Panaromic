@@ -2,7 +2,7 @@ var watchId;
 var latval,lngval,map,mapOptions,marker=null;
 window.onload = function(){
 $("#map").height($(window).height());
-$("#map").width($(window).width());
+/*$("#map").width($(window).width());*/
 if(navigator.geolocation){
     /*watchId = navigator.geolocation.watchPosition(onSuccess, onError,{
       maximumAge:60*1000,
