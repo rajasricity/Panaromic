@@ -36,7 +36,6 @@ $("#login").on('submit', function(e){
 
 $("#saveData").on('submit', function(e){
       e.preventDefault();
-      alert(localStorage.TrackId);
       var fdata = $("#saveData").serialize();
       $.ajax({
          url:server+"saveData.php",
