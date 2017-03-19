@@ -1,5 +1,5 @@
 var watchId;
-var latval,lngval,map,mapOptions,marker;
+var latval,lngval,map,mapOptions,marker=null;
 window.onload = function(){
 $("#map").height($(window).height());
 $("#map").width($(window).width());
@@ -33,11 +33,16 @@ function onSuccess(position){
   map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
   //placemarker(new google.maps.LatLng(currentLat, currentLong));
-  marker = new google.maps.Marker({
-     position: new google.maps.LatLng(currentLat, currentLong),
+   if(marker != null){
+     marker.setPosition(currentLat,currentLong);
+  }else{
+marker = new google.maps.Marker({
+     position: new google.maps.LatLng(position.coords.latitude,position.coords.longitude),
      icon: "images/marker.ico",
      map: map
   });
+  //marker.setPosition(currentLat,currentLong);
+  }
 
   watchId = navigator.geolocation.watchPosition(showPosition, onError,{
       maximumAge:60*1000,
