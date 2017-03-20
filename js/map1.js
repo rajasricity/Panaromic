@@ -1,9 +1,10 @@
 var watchId;
-var latval,lngval,map,mapOptions,marker=null;
+var latval,lngval,map,mapOptions,marker;
 window.onload = function(){
 $("#map").height($(window).height());
+$("#map").width($(window).width());
 if(navigator.geolocation){
-    navigator.geolocation.getCurrentPosition(onSuccess, onError,{
+    watchId = navigator.geolocation.watchPosition(onSuccess, onError,{
       maximumAge:60*1000,
       timeout:5*60*1000,
       enableHighAccuracy: true
@@ -26,27 +27,17 @@ function onSuccess(position){
   };
   map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
-  watchId = navigator.geolocation.watchPosition(showPosition, onError,{
-      maximumAge:60*1000,
-      timeout:5*60*1000,
-      enableHighAccuracy: true
-    });
-  //alert("Watch Id :"+watchId+" Lat :"+latval+"&nbsp;Lon :"+lngval);
-/*  $("#wi").html(watchId);
-  $("#la").html(latval);
-  $("#ln").html(lngval);*/
-marker = new google.maps.Marker({
-     position: new google.maps.LatLng(position.coords.latitude,position.coords.longitude),
-     icon: "images/marker.png",
+  //placemarker(new google.maps.LatLng(currentLat, currentLong));
+  marker = new google.maps.Marker({
+     position: new google.maps.LatLng(currentLat, currentLong),
+     icon: "images/marker.ico",
      map: map
   });
+  //alert("Watch Id :"+watchId+" Lat :"+latval+"&nbsp;Lon :"+lngval);
+  $("#wi").html(watchId);
+  $("#la").html(latval);
+  $("#ln").html(lngval);
 }
-
-function showPosition(position) {
-  map.setCenter(new google.maps.LatLng(position.coords.latitude,position.coords.longitude));
-  marker.setPosition({lat: position.coords.latitude, lng: position.coords.longitude});
- }
-
 function placemarker(position){
   var marker = new google.maps.Marker({
      position: position,

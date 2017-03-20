@@ -25,7 +25,11 @@ $("#login").on('submit', function(e){
         }else{
         $("#wmsg").hide();
         localStorage.setItem("Userno",str.Userno);
-        location.href="Dashboard.html";
+        if(str.Role == 'Director' || str.Role == 'HR'){
+        location.href="Director.html";
+        }else{
+         location.href="Dashboard.html";
+        }
         }
       },
       error:function(qXHR, exception){
