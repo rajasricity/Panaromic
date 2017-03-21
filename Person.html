@@ -86,7 +86,6 @@
     $(document).ready(function(){
        connect();
        getUname();
-       alert(localStorage.Empid);
        $("#app").load(server+"getEmployee.php?eid="+localStorage.Empid);
     });
 </script>
