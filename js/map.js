@@ -45,6 +45,8 @@ marker = new google.maps.Marker({
 function showPosition(position) {
   map.setCenter(new google.maps.LatLng(position.coords.latitude,position.coords.longitude));
   marker.setPosition({lat: position.coords.latitude, lng: position.coords.longitude});
+  latval = position.coords.latitude;
+  lngval = position.coords.longitude;
  }
 
 function placemarker(position){
