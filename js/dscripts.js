@@ -79,12 +79,12 @@ function logout(){
 
 
 
-function showPersonnel(eid){
-alert(eid);     
+function showPersonnel(eid){    
 localStorage.setItem("Empid",eid);
 location.href="Person.html";
 }
 function home(){
 localStorage.setItem("Empid","");
+localStorage.removeItem("Empid");     
 location.href="Director.html";
 }
