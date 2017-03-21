@@ -79,6 +79,7 @@ $.ajax({
    type:"post",
    dataType:"json",
    success: function(str){
+alert(str.length);
      if(str.length>0){
     $("#map").height($(window).height());
     mapOptions = {
@@ -114,11 +115,58 @@ new google.maps.event.addListener(marker, 'click', (function (marker, i) {
     }
 
      }else{
+	     alert("In Show Map");
      showMap();
      }
    }
 });
     });
+
+	function showMap(){
+ $("#map").height($(window).height());
+ if(navigator.geolocation){
+    navigator.geolocation.getCurrentPosition(showPosition, onError,{
+      maximumAge:60*1000,
+      timeout:5*60*1000,
+      enableHighAccuracy: true
+    });
+}else{
+  Alert("Your Device Doesn't support Geo Location");
+}
+}
+
+function showPosition(position) {
+
+ mapOptions = {
+    zoom: 15,
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    disableDefaultUI: true
+  };
+  map = new google.maps.Map(document.getElementById("map"), mapOptions);
+ marker = new google.maps.Marker({
+     position: new google.maps.LatLng(position.coords.latitude,position.coords.longitude),
+     icon: "images/marker.ico",
+     map: map
+  });
+  map.setCenter(new google.maps.LatLng(position.coords.latitude,position.coords.longitude));
+ }
+
+ function onError(error){
+ switch(error.code){
+   case PERMISSION_DENIED:
+   alert("User denied permission");
+   break;
+   case TIMEOUT:
+   alert("Geolocation Timeout");
+   break;
+   case POSITION_UNAVALABLE:
+   alert("Geolocation information is not available");
+   break;
+   default:
+   alert("Unknown Error");
+   break;
+ }
+}
 </script>
 </body>
 </html>
