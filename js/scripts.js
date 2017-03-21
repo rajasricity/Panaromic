@@ -130,6 +130,7 @@ function logout(){
 }
 
 function startVisit(){
+  alert(latval);
 var fdata = {"userno":localStorage.Userno,"latitude":latval,"longitude":lngval};
 $.ajax({
     url:server+"saveStart.php",
@@ -150,6 +151,7 @@ $.ajax({
 }
 
 function saveStop(){
+  alert(latval);
 var fdata = {"userno":localStorage.Userno,"latitude":latval,"longitude":lngval,"trackid":localStorage.TrackId};
 $.ajax({
     url:server+"saveStop.php",
