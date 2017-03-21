@@ -73,12 +73,14 @@ function showOptions(){
 function logout(){
   localStorage.setItem("Userno","");
   localStorage.setItem("Role","");
+  localStorage.clear();
   location.href="Login.html";
 }
 
 
 
 function showPersonnel(eid){
+alert(eid);     
 localStorage.setItem("Empid",eid);
 location.href="Person.html";
 }
