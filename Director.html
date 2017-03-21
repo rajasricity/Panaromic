@@ -79,9 +79,7 @@ $.ajax({
    type:"post",
    dataType:"json",
    success: function(str){
-alert(str.length);
      if(str.length>0){
-alert("In Users Report");
     $("#map").height($(window).height());
     mapOptions = {
     zoom: 10,
@@ -116,7 +114,6 @@ new google.maps.event.addListener(marker, 'click', (function (marker, i) {
     }
 
      }else{
-	     alert("In Show Map");
      showMap();
      }
    }
