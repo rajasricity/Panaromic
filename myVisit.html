@@ -12,13 +12,18 @@
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="fontawesome/css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="dtable/css/jquery.dataTables.css">
 </head>
 <body>  <br><br><br><br>
-<div class="container" id="app"></div>
+    <div id="mydata"></div>
+    <div class="container">
+<div id="myMap" style="width:100%;height:300px;"></div>
+    </div>
+
 <div style="position:fixed;top:10px;width:100%;z-index:999;padding:5px;">
     <div class="row">
 <div class="col-xs-3">
-<button class="myBtn" onclick="showOptions();"><i class="fa fa-user fa-2x"></i></button>
+<button class="myBtn" onclick="location.href='Dashboard.html'"><i class="fa fa-home fa-2x"></i></button>
 </div>
 <div class="col-xs-6">
     <div class="outDiv">
@@ -26,20 +31,11 @@
     </div>
 </div>
 <div class="col-xs-3 pull-right" style="text-align: right">
-<button class="myBtn"><i class="fa fa-home fa-2x" onclick="home();"></i></button><br><br>
-<!--<button class="myBtn" onclick="logout();"><i class="fa fa-arrow-right"></i></button>-->
+<button class="myBtn"><i class="fa fa-arrow-left fa-2x" onclick="window.history.back();"></i></button><br><br>
 </div>
     </div>
 </div>
-<div style="position:fixed;top:60px;z-index:999;padding:5px;" id="data">
-<ul class="myUl" id="myUl"></ul>
-</div>
-
-<div style="position:fixed;top:80px;left:10px;width:95%;z-index:999;padding:5px;background-color: #fff;display:none" id="myap">
-<button class="btn btn-danger" style="position: absolute;z-index:999;right:0px;" onclick="$('#myap').slideToggle();">CLOSE</button>
-    <div id="myMap" style="width:100%;height:500px;"></div>
-</div>
-<!--Toggle Menu Options Close-->
+    <!--Toggle Menu Options Close-->
     <div class="container_fluid" style="padding:0px;">
 <div id="connection" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
   <div class="modal-dialog" style="padding-top:50%">
@@ -67,13 +63,14 @@
     </div>
 <script src="js/jquery-3.1.1.min.js"></script>
 <script src="bootstrap/js/bootstrap.js"></script>
-<script src="js/dscripts.js"></script>
+<script src="js/scripts.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyB0WTjQy5o77JCfRCuT0XiR9Jew-nMhIKA" async defer></script>
 <script>
     $(document).ready(function(){
        connect();
        getUname();
-       $("#app").load(server+"getEmployee.php?eid="+localStorage.Empid);
+       var fdata = {"User_Id":localStorage.Userno};
+       $("#mydata").load(server+"myVisit.php?vid="+localStorage.Vid);
     });
 </script>
 </body>
