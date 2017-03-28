@@ -1,7 +1,8 @@
 var server = "https://panaromic.com/application/";
+var vid;
 $(document).ready(function(){
   //localStorage.setItem("TrackId","PTPLT2");
-if(localStorage.TrackId != ''){
+if(localStorage.getItem("TrackId")){
 $("#stop").show();
 $("#svisit").addClass("disabled");
 }
@@ -188,4 +189,55 @@ $.ajax({
       $("#myUl").slideToggle("slow");
     }
 });
+}
+
+function myvisits(){
+  location.href="myVisits.html";
+}
+function refresh(){
+  location.reload();
+}
+function showVisit(vid1){
+  localStorage.setItem("Vid",vid1);
+  location.href="myVisit.html";
+}
+function showRoute(lat1,lng1,lat2,lng2){
+  var points = [{"lat":lat1,"long":lng1},{"lat":lat2,"long":lng2}];
+  var map;
+  var mapOptions = {
+    center: new google.maps.LatLng(points[0].lat,points[0].long),
+    zoom:17,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+  map = new google.maps.Map(document.getElementById("myMap"),mapOptions);
+  var latlngbounds = new google.maps.LatLngBounds();
+  for(var i=0;i<points.length;i++){
+    var marker = new google.maps.Marker({
+       position: new google.maps.LatLng(points[i].lat,points[i].long),
+       map:map
+    });
+    latlngbounds.extend(marker.position);
+  }
+ map.fitBounds(latlngbounds);
+
+  var directionsService = new google.maps.DirectionsService();
+  var poly = new google.maps.Polyline({ strokeColor:"#FF0000", strokeWeight:4});
+  var request = {
+    origin: new google.maps.LatLng(points[0].lat,points[0].long),
+    destination: new google.maps.LatLng(points[1].lat,points[1].long),
+    travelMode:google.maps.DirectionsTravelMode.DRIVING
+  };
+  directionsService.route(request, function(response, status){
+     if(status === google.maps.DirectionsStatus.OK){
+       new google.maps.DirectionsRenderer({
+          map:map,
+          polylineOptions:poly,
+          directions:response
+       });
+     }
+  });
+
+}
+function drawPath(lat1,lng1,lat2,lng2){
+
 }
