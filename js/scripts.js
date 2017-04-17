@@ -1,4 +1,4 @@
-var server = "http://localhost/application/";
+var server = "https://panaromic.com/application/";
 var vid;
 $(document).ready(function(){
   //localStorage.setItem("TrackId","PTPLT2");
