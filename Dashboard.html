@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="fontawesome/css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <script src="https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyB0WTjQy5o77JCfRCuT0XiR9Jew-nMhIKA" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyB0WTjQy5o77JCfRCuT0XiR9Jew-nMhIKA&libraries=places,geometry" async defer></script>
 </head>
 <body id="main" data-role="page">
 <div style="position:fixed;top:10px;width:100%;z-index:999;padding:5px;">
@@ -26,26 +26,28 @@
     </div>
 </div>
 <div class="col-xs-3 pull-right" style="text-align: right">
-<button class="myBtn"><i class="fa fa-refresh fa-2x" onclick="refresh();"></i></button><br><br>
-<button class="myBtn" style="background-color: red;display:none" id="stop"><i class="fa fa-stop" onclick="saveStop();"></i></button>
+<button class="myBtn"><i class="fa fa-refresh fa-2x" onclick="refresh();"></i></button><br><br><br><br><br>
 </div>
     </div>
 </div>
-<div style="position:fixed;top:60px;z-index:999;padding:5px;">
+<div style="position:fixed;top:60px;z-index:9999;padding:5px;">
 <ul class="myUl" id="myUl">
-    <li onclick="startVisit();" id="svisit"><i class="fa fa-suitcase"></i> Visit</li>
     <li onclick="saveOffice();"><i class="fa fa-building-o"></i> Office</li>
     <li onclick="logout();"><i class="fa fa-level-down"></i> Logout</li>
     <li onclick="myvisits();"><i class="fa fa-suitcase"></i> My Visits</li>
 </ul>
 </div>
+<div style="position:fixed;top:80px;z-index:999;padding:5px;width:100%">
+<input type="text" id="myin" placeholder="Where To" class="form-control" />
+<div style="background-color: #E3EF39;padding:10px;display:none" id="itext"></div>
+</div>
 <div style="position:fixed;bottom:10px;z-index:999;padding:5px;background-color: #fff;width:100%;display:none" id="sdata">
 <div class="panel-body">
 <form id="saveData">
 <input type="hidden" name="tid" id="tid"/>
-<input type="hidden" name="vehicle" id="vehicle" value="" />
-<input type="text" name="client" class="form-control" placeholder="Client" /><br>
-<textarea name="purpose" rows="3" class="form-control" placeholder="Purpose"></textarea><br>
+<input type="hidden" name="vehicle" id="vehicle" value="" required="required"/>
+<input type="text" name="client" class="form-control" placeholder="Client" required="required"/><br>
+<textarea name="purpose" rows="3" class="form-control" placeholder="Purpose" required="required"></textarea><br>
     <div class="pull-right">
         <input type="submit" name="submit" value="SAVE" class="btn btn-primary" />
     </div>
@@ -57,6 +59,13 @@
     <button class="btn btn-primary" onclick="addVehicle('Cab');"><i class="fa fa-fw fa-cab"></i></button>
     </div>
 </div>
+</div>
+
+<div style="position:fixed;bottom:10px;z-index:999;padding:5px;width:100%;">
+<center><button class="myBtn" style="background-color: red;display:none;width:100px;height:100px;border-radius:50px;" id="stop"><i class="fa fa-stop" onclick="saveStop();"></i></button></center>
+</div>
+<div style="position:fixed;bottom:10px;z-index:999;padding:5px;width:100%;display:none" id="sbutton">
+    <center><button class="btn btn-primary" onclick="startVisit();" style="width:100px;height:100px;border-radius:50px;"><i class="fa fa-play fa-2x"></i></button></center>
 </div>
 <!--Toggle Menu Options Start-->
 

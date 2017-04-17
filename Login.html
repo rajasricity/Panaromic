@@ -16,21 +16,9 @@
 <body>
 <br><br>
     <div class="container-fluid">
-<div class="container">
+<div class="container" id="mmlog">
 <br><br><br>
 <center><img src="images/login-logo.png" alt="Panaromic Logo" width="30%"><br><br></center>
-    <!--<div class="panel panel-primary">
-        <div class="panel-heading">
-            <h3 class="panel-title"><i class="fa fa-user"></i> LOGIN</h3>
-        </div>
-        <div class="panel-body">
-<form id="login" autocomplete="off">
-<input type="number" name="mnumber" id="mnumber" value="" class="form-control" placeholder="Mobile Number" tabindex="1" required="required"/><br>
-<input type="password" name="pword" id="pword" value="" class="form-control" placeholder="Password" tabindex="2" required="required"/><br>
-<input type="submit" name="submit" value="LOGIN" class="btn btn-primary btn-lg" style="width:100%" tabindex="3"/>
-</form>
-        </div>
-    </div>-->
 <form id="login" autocomplete="off">
 <input type="number" name="mnumber" class="myInput" placeholder="Mobile Number"/><br><br>
 <input type="password" name="pword" class="myInput" placeholder="Password"/><br><br>
@@ -65,5 +53,21 @@
 <script src="js/jquery-3.1.1.min.js"></script>
 <script src="bootstrap/js/bootstrap.js"></script>
 <script src="js/scripts.js"></script>
+<script>
+ $(document).ready(function(){
+   $("#mmlog").hide();
+        if(localStorage.Userno){
+        if(localStorage.Role != 'Director'){
+          location.href="Dashboard.html";
+        }else{
+          location.href="Director.html";
+        }
+
+        }else{
+          $("#mmlog").show();
+          //location.href="Login.html";
+        }
+    });
+</script>
 </body>
 </html>
