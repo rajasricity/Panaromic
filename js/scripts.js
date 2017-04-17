@@ -1,4 +1,4 @@
-var server = "https://panaromic.com/application/";
+var server = "http://localhost/application/";
 var vid;
 $(document).ready(function(){
   //localStorage.setItem("TrackId","PTPLT2");
@@ -41,6 +41,8 @@ $("#login").on('submit', function(e){
 
 $("#saveData").on('submit', function(e){
       e.preventDefault();
+      if($("#vehicle").val() != ''){
+      $("#tid").val(localStorage.getItem("TrackId"));
       var fdata = $("#saveData").serialize();
       $.ajax({
          url:server+"saveData.php",
@@ -52,12 +54,18 @@ $("#saveData").on('submit', function(e){
          success: function(str){
            $("#myModal").modal('hide');
            $("#sdata").hide();
+           $("#stop").show();
+            $("#itext").hide();
            //alert(str);
            //location.reload();
          }
       });
+      }else{
+       alert("Select Type of Vehicle");
+      }
    });
 });
+
 function connect(){
 $.ajax({
       url:server+"connect.php",
@@ -143,9 +151,7 @@ $.ajax({
     success: function(str){
       $("#loader").modal('hide');
       localStorage.setItem("TrackId",str);
-      $("#stop").show();
-      $("#svisit").addClass("disabled");
-      $("#myUl").slideToggle("slow");
+      $("#sbutton").hide();
       $("#sdata").show();
     }
 });

@@ -26,6 +26,46 @@ function onSuccess(position){
   };
   map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
+  var input = document.getElementById('myin');
+  var autocomplete = new google.maps.places.Autocomplete(input);
+  autocomplete.bindTo('bounds', map);
+
+  autocomplete.addListener('place_changed', function() {
+          var place = autocomplete.getPlace();
+          // If the place has a geometry, then present it on a map.
+          if (place.geometry.viewport) {
+            map.fitBounds(place.geometry.viewport);
+          } else {
+            map.setCenter(place.geometry.location);
+            map.setZoom(19);  // Why 17? Because it looks good.
+          }
+          marker.setPosition(place.geometry.location);
+          var origin = new google.maps.LatLng(latval, lngval);
+          var destination = new google.maps.LatLng(place.geometry.location.lat(),place.geometry.location.lng());
+
+           var directionsService = new google.maps.DirectionsService();
+     var directionsDisplay = new google.maps.DirectionsRenderer();
+     directionsDisplay.setMap(map);
+     directionsDisplay.setPanel(document.getElementById('panel'));
+     var request = {
+       origin: origin,
+       destination: destination,
+       travelMode: google.maps.DirectionsTravelMode.DRIVING
+     };
+
+     directionsService.route(request, function (response, status) {
+       if (status == google.maps.DirectionsStatus.OK) {
+         directionsDisplay.setDirections(response);
+         var point = response.routes[ 0 ].legs[ 0 ];
+         //alert("Time : "+point.duration.text+" Distance : "+point.distance.text);
+         $("#itext").show();
+         $("#itext").html("Distance : "+point.distance.text+"  Duration : "+point.duration.text);
+         $("#sbutton").show();
+       }
+     });
+    var dist = (google.maps.geometry.spherical.computeDistanceBetween(origin, destination) / 1000).toFixed(2);
+        });
+
   watchId = navigator.geolocation.watchPosition(showPosition, onError,{
       maximumAge:60*1000,
       timeout:5*60*1000,
