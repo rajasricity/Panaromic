@@ -107,6 +107,11 @@
     $(document).ready(function(){
        connect();
        getUname();
+if(localStorage.Userno != '' && localStorage.Role == 'Sales'){
+
+}else{
+  location.href= "Login.html";
+}
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
     document.addEventListener("backbutton", function (e) {

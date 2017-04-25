@@ -99,6 +99,11 @@ To Date
     $(document).ready(function(){
        connect();
        getUname();
+       if(localStorage.Userno != '' && localStorage.Role == 'Director'){
+
+       }else{
+         location.href='Login.html';
+       }
        $("#app").load(server+"getEmployee.php?eid="+localStorage.Empid);
        $("#client").load(server+"getClients.php?eid="+localStorage.Empid);
     });
