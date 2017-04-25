@@ -1,4 +1,4 @@
-var server = "http://localhost/application/";
+var server = "https://panaromic.com/application/";
 var vid;
 $(document).ready(function(){
   //localStorage.setItem("TrackId","PTPLT2");
@@ -141,6 +141,7 @@ function logout(){
 }
 
 function startVisit(){
+localStorage.setItem("Showbox","Yes");
 var fdata = {"userno":localStorage.Userno,"latitude":latval,"longitude":lngval};
 $.ajax({
     url:server+"saveStart.php",
@@ -180,6 +181,31 @@ $.ajax({
 function addVehicle(veh){
   $("#vehicle").val(veh);
   $("#tid").val(localStorage.TrackId);
+  var vehicle = veh;var tid = localStorage.TrackId;var client = $("#client").val();var purpose = $("#purpose").val();
+if(vehicle != '' && tid != '' && client != '' && purpose != ''){
+var fdata = {"vehicle":vehicle,"tid":tid,"client":client,"purpose":purpose };
+
+$.ajax({
+         url:server+"saveData.php",
+         type:"post",
+         data:fdata,
+         beforeSend: function(){
+         $("#myModal").modal('show');
+         },
+         success: function(str){
+           $("#myModal").modal('hide');
+           $("#sdata").hide();
+           $("#stop").show();
+           $("#itext").hide();
+           localStorage.setItem("Showbox","No");
+           //alert(str);
+           //location.reload();
+         }
+      });
+
+}else{
+  alert("Please all the fields");
+}
 }
 
 function saveOffice(){
