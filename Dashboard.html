@@ -37,33 +37,37 @@
     <li onclick="myvisits();"><i class="fa fa-suitcase"></i> My Visits</li>
 </ul>
 </div>
+
 <div style="position:fixed;top:80px;z-index:999;padding:5px;width:100%">
 <input type="text" id="myin" placeholder="Where To" class="form-control" />
 <div style="background-color: #E3EF39;padding:10px;display:none" id="itext"></div>
 </div>
-<div style="position:fixed;bottom:10px;z-index:999;padding:5px;background-color: #fff;width:100%;display:none" id="sdata">
+
+
+<div style="position:fixed;bottom:1px;z-index:9999;padding:5px;background-color: #fff;width:100%;display:none" id="sdata">
 <div class="panel-body">
-<form id="saveData">
 <input type="hidden" name="tid" id="tid"/>
 <input type="hidden" name="vehicle" id="vehicle" value="" required="required"/>
-<input type="text" name="client" class="form-control" placeholder="Client" required="required"/><br>
-<textarea name="purpose" rows="3" class="form-control" placeholder="Purpose" required="required"></textarea><br>
-    <div class="pull-right">
+<input type="text" name="client" id="client" class="form-control" placeholder="Client" required="required"/><br>
+<textarea name="purpose" rows="3" id="purpose" class="form-control" placeholder="Purpose" required="required"></textarea><br>
+<!--    <div class="pull-right">
         <input type="submit" name="submit" value="SAVE" class="btn btn-primary" />
-    </div>
-</form>
-<div class="btn-group">
-    <button class="btn btn-primary" onclick="addVehicle('Two Wheeler');"><i class="fa fa-fw fa-bicycle"></i></button>
-    <button class="btn btn-primary" onclick="addVehicle('Four Wheeler');"><i class="fa fa-fw fa-car"></i></button>
-    <button class="btn btn-primary" onclick="addVehicle('Auto');"><i class="fa fa-fw fa-dashboard"></i></button>
-    <button class="btn btn-primary" onclick="addVehicle('Cab');"><i class="fa fa-fw fa-cab"></i></button>
+    </div>-->
+<div class="btn-group pull-right">
+    <button class="btn btn-primary btn-lg" onclick="addVehicle('Two Wheeler');"><i class="fa fa-fw fa-bicycle"></i></button>
+    <button class="btn btn-primary btn-lg" onclick="addVehicle('Four Wheeler');"><i class="fa fa-fw fa-car"></i></button>
+<!--    <button class="btn btn-primary btn-lg" onclick="addVehicle('Auto');"><i class="fa fa-fw fa-dashboard"></i></button>
+    <button class="btn btn-primary btn-lg" onclick="addVehicle('Cab');"><i class="fa fa-fw fa-cab"></i></button>-->
     </div>
 </div>
 </div>
 
+
 <div style="position:fixed;bottom:10px;z-index:999;padding:5px;width:100%;">
 <center><button class="myBtn" style="background-color: red;display:none;width:100px;height:100px;border-radius:50px;" id="stop"><i class="fa fa-stop" onclick="saveStop();"></i></button></center>
 </div>
+
+
 <div style="position:fixed;bottom:10px;z-index:999;padding:5px;width:100%;display:none" id="sbutton">
     <center><button class="btn btn-primary" onclick="startVisit();" style="width:100px;height:100px;border-radius:50px;"><i class="fa fa-play fa-2x"></i></button></center>
 </div>
@@ -109,24 +113,17 @@
        getUname();
 if(localStorage.Userno != '' && localStorage.Role == 'Sales'){
 
+}else if(localStorage.Userno != '' && localStorage.Role == 'Test'){
+
 }else{
   location.href= "Login.html";
 }
-document.addEventListener("deviceready", onDeviceReady, false);
-function onDeviceReady() {
-    document.addEventListener("backbutton", function (e) {
-        e.preventDefault();
-    navigator.notification.confirm("Are you sure want to exit from App?", onConfirmExit, "Confirmation", "Yes,No");
-    }, false );
+if(localStorage.Showbox == 'Yes'){
+  $("#sdata").show();
+}else{
+$("#sdata").hide();
 }
 
-function onConfirmExit(button) {
-    if(button==2){ //If User select a No, then return back;
-        return;
-    }else{
-        navigator.app.exitApp(); // If user select a Yes, quit from the app.
-    }
-}
     });
 </script>
 </body>
