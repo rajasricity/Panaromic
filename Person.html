@@ -39,6 +39,32 @@
 <button class="btn btn-danger" style="position: absolute;z-index:999;right:0px;" onclick="$('#myap').slideToggle();">CLOSE</button>
     <div id="myMap" style="width:100%;height:500px;"></div>
 </div>
+<div style="position:absolute;top:10px;left:5px;width:98%;background-color:#fff;z-index:9999;padding:10px;display:none" id="searchData">
+<div class="row">
+    <div class="col-xs-6">
+From Date
+<input type="date" name="fdate" id="fdate" class="form-control" />
+    </div>
+<div class="col-xs-6">
+To Date
+<input type="date" name="tdate" id="tdate" class="form-control" />
+    </div>
+</div>
+<div class="row" style="margin-top:20px;">
+    <div class="col-xs-6">
+<select name="client" id="client" class="form-control">
+    <option value="">SELECT CLIENT</option>
+</select>
+    </div>
+    <div class="col-xs-6">
+<button class="btn btn-primary btn-sm" style="width:100%" onclick="updateVisits();"><i class="fa fa-search"></i></button>
+    </div>
+</div>
+
+</div>
+<div style="position:absolute;bottom:10px;right:10px;z-index:999;">
+<button class="myBtn" onclick="showSearch();"><i class="fa fa-filter fa-2x"></i></button>
+</div>
 <!--Toggle Menu Options Close-->
     <div class="container_fluid" style="padding:0px;">
 <div id="connection" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
@@ -74,7 +100,20 @@
        connect();
        getUname();
        $("#app").load(server+"getEmployee.php?eid="+localStorage.Empid);
+       $("#client").load(server+"getClients.php?eid="+localStorage.Empid);
     });
+function updateVisits(){
+var fdate = $("#fdate").val();var tdate = $("#tdate").val();var client = $("#client").val();
+if(fdate != '' && tdate != '' && client != ''){
+$("#searchData").hide();
+$("#app").load(server+"getSearch.php?eid="+localStorage.Empid+"&fdate="+fdate+"&tdate="+tdate+"&client="+client);
+}else{
+  alert("Please fill selected values");
+}
+}
+function showSearch(){
+  $("#searchData").slideToggle();
+}
 </script>
 </body>
 </html>
