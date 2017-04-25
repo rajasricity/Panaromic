@@ -1,4 +1,4 @@
-var server = "https://panaromic.com/application/";
+var server = "http://localhost/application/";
 var vid;
 $(document).ready(function(){
   //localStorage.setItem("TrackId","PTPLT2");
@@ -26,6 +26,7 @@ $("#login").on('submit', function(e){
         }else{
         $("#wmsg").hide();
         localStorage.setItem("Userno",str.Userno);
+        localStorage.setItem("Role",str.Role);
         if(str.Role == 'Director' || str.Role == 'HR'){
         location.href="Director.html";
         }else{
