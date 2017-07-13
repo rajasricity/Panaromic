@@ -13,6 +13,13 @@
     <icon src="resources/hdpi.png" density="hdpi" />
     <icon src="resources/xhdpi.png" density="xhdpi" />
     </platform>
+    <platform name="ios">
+    <icon src="resources/ldpi.png" density="ldpi" />
+    <icon src="resources/mdpi" density="mdpi" />
+    <icon src="resources/hdpi.png" density="hdpi" />
+    <icon src="resources/xhdpi.png" density="xhdpi" />
+    </platform>
+    
     <platform name="android">
     <!-- you can use any density that exists in the Android project -->
     <splash src="resources/hdpil.png" density="land-hdpi"/>
